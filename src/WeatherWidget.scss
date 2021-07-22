@@ -1,0 +1,16 @@
+.WeatherWidget {
+    &__settingsButton {
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__settingsButtonIcon {
+        width: 24px;
+        height: auto;
+    }
+}
