@@ -23,7 +23,6 @@ const WeatherWidget: React.FC = () => {
                 ) : (
                     <IconSettings className="WeatherWidget__settingsButtonIcon" />
                 )}
-
             </button>
 
             {isSettingsPanelOpen ? (
