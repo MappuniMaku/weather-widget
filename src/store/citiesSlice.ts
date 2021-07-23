@@ -1,9 +1,13 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { CityWeatherDataResponse } from '../scripts/types';
-import { apiGetWeatherDataByCityName } from '../scripts/api-methods';
+import { apiGetWeatherDataByCityName, apiGetWeatherDataByCoords } from '../scripts/api-methods';
 
 export const getWeatherDataByCityName = createAsyncThunk('cities/addCity', (cityName: string) => {
     return apiGetWeatherDataByCityName(cityName);
+});
+
+export const getWeatherDataByCoords = createAsyncThunk('cities/addCity', (position: GeolocationPosition) => {
+    return apiGetWeatherDataByCoords(position);
 });
 
 type CitiesState = {
