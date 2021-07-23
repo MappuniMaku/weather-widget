@@ -28,3 +28,5 @@ export type CityWeatherDataResponse = {
     weather: Array<WeatherInfo>;
     wind: WindInfo;
 };
+
+export type CitiesListType = Array<CityWeatherDataResponse>;

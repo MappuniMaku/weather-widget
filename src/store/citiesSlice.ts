@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { CityWeatherDataResponse } from '../scripts/types';
+import { CitiesListType } from '../scripts/types';
 import { apiGetWeatherDataByCityName, apiGetWeatherDataByCoords } from '../scripts/api-methods';
 
 export const getWeatherDataByCityName = createAsyncThunk('cities/addCity', (cityName: string) => {
@@ -11,7 +11,7 @@ export const getWeatherDataByCoords = createAsyncThunk('cities/addCity', (positi
 });
 
 type CitiesState = {
-    items: CityWeatherDataResponse[];
+    items: CitiesListType;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null;
 };
@@ -26,10 +26,10 @@ export const citiesSlice = createSlice({
     name: 'cities',
     initialState,
     reducers: {
-        setCities: (state, action: PayloadAction<Array<CityWeatherDataResponse>>) => {
+        setCities: (state, action: PayloadAction<CitiesListType>) => {
             state.items = action.payload
         },
-        removeCity: (state, action) => {
+        removeCity: (state, action: PayloadAction<number>) => {
             state.items = state.items.filter((item => item.id !== action.payload));
         },
     },
@@ -39,6 +39,11 @@ export const citiesSlice = createSlice({
         });
         builder.addCase(getWeatherDataByCityName.fulfilled, (state, action) => {
             state.status = 'succeeded';
+            const cityIndex = state.items.findIndex(item => item.id === action.payload.id);
+            if (cityIndex > -1) {
+                state.items[cityIndex] = action.payload;
+                return;
+            }
             state.items.push(action.payload);
         });
         builder.addCase(getWeatherDataByCityName.rejected, (state, action) => {

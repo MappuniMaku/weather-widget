@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import { useAppSelector, useAppDispatch } from './store/hooks';
-import { getWeatherDataByCoords } from './store/citiesSlice';
+import { getWeatherDataByCoords, getWeatherDataByCityName, setCities } from './store/citiesSlice';
+import { CitiesListType } from './scripts/types';
 
 import { CitiesList } from './components/CitiesList/CitiesList';
 import { SettingsPanel } from './components/SettingsPanel/SettingsPanel';
@@ -30,11 +31,27 @@ const WeatherWidget: React.FC = () => {
     };
 
     useEffect(() => {
-        if (cities.length === 0) {
-            getLocation();
-        }
+        try {
+            const localStorageCities = localStorage.getItem('cities');
+
+            if (localStorageCities !== null) {
+                const parsedCities: CitiesListType = JSON.parse(localStorageCities);
+                dispatch(setCities(parsedCities));
+                parsedCities.forEach(city => {
+                    dispatch(getWeatherDataByCityName(city.name));
+                });
+            }
+
+            if (localStorageCities === null) {
+                getLocation();
+            }
+        } catch {}
         // eslint-disable-next-line
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('cities', JSON.stringify(cities));
+    }, [cities]);
 
     return (
         <div className="WeatherWidget">
