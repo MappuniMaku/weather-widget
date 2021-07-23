@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from './store/hooks';
 import { getWeatherDataByCoords, getWeatherDataByCityName, setCities } from './store/citiesSlice';
 import { CitiesListType } from './scripts/types';
+import { LOCAL_STORAGE } from './scripts/constants';
 
 import { CitiesList } from './components/CitiesList/CitiesList';
 import { SettingsPanel } from './components/SettingsPanel/SettingsPanel';
@@ -32,7 +33,7 @@ const WeatherWidget: React.FC = () => {
 
     useEffect(() => {
         try {
-            const localStorageCities = localStorage.getItem('cities');
+            const localStorageCities = localStorage.getItem(LOCAL_STORAGE.CITIES);
 
             if (localStorageCities !== null) {
                 const parsedCities: CitiesListType = JSON.parse(localStorageCities);
@@ -50,7 +51,7 @@ const WeatherWidget: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('cities', JSON.stringify(cities));
+        localStorage.setItem(LOCAL_STORAGE.CITIES, JSON.stringify(cities));
     }, [cities]);
 
     return (
