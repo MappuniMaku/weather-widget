@@ -20,6 +20,7 @@ type WindInfo = {
 };
 
 export type CityWeatherDataResponse = {
+    id: number;
     main: MainInfo;
     name: string;
     sys: SystemInfo;
