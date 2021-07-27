@@ -38,6 +38,9 @@ export const citiesSlice = createSlice({
             state.items.splice(from, 1);
             state.items.splice(to, 0, draggedCity);
         },
+        clearError: state => {
+            state.error = null;
+        },
     },
     extraReducers: builder => {
         builder.addCase(getWeatherDataByCityName.pending, state => {
@@ -59,6 +62,6 @@ export const citiesSlice = createSlice({
     },
 });
 
-export const { setCities, removeCity, changeCitiesOrder } = citiesSlice.actions;
+export const { setCities, removeCity, changeCitiesOrder, clearError } = citiesSlice.actions;
 
 export default citiesSlice.reducer;

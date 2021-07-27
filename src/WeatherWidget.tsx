@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { useAppSelector, useAppDispatch } from './store/hooks';
-import { getWeatherDataByCoords, getWeatherDataByCityName, setCities } from './store/citiesSlice';
+import { getWeatherDataByCoords, getWeatherDataByCityName, setCities, clearError } from './store/citiesSlice';
 import { CitiesListType } from './scripts/types';
 import { LOCAL_STORAGE } from './scripts/constants';
 
@@ -17,6 +17,7 @@ const WeatherWidget: React.FC = () => {
     const [isSettingsPanelOpen, setSettingsPanelOpen] = useState<boolean>(false);
 
     const cities = useAppSelector(state => state.cities.items);
+    const error = useAppSelector(state => state.cities.error);
     const dispatch = useAppDispatch();
 
     const getLocation = () => {
@@ -53,6 +54,12 @@ const WeatherWidget: React.FC = () => {
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE.CITIES, JSON.stringify(cities));
     }, [cities]);
+
+    useEffect(() => {
+        if (error === null) return;
+        alert(error);
+        dispatch(clearError());
+    }, [error, dispatch]);
 
     return (
         <div className="WeatherWidget">
