@@ -22,4 +22,30 @@
     font-size: 1.75rem;
     font-weight: 700;
   }
+
+  &__weatherDescription {
+    font-size: 0.75rem;
+  }
+
+  &__additionalInfo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
+    gap: 8px 12px;
+    margin-top: 12px;
+  }
+
+  &__additionalInfoItem {
+    display: flex;
+    align-items: center;
+  }
+
+  &__additionalInfoIcon {
+    width: 16px;
+    margin-right: 8px;
+  }
+
+  &__additionalInfoText {
+    font-size: 0.75rem;
+  }
 }
