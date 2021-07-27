@@ -56,15 +56,24 @@ const WeatherWidget: React.FC = () => {
 
     return (
         <div className="WeatherWidget">
-            Виджет погоды
             <button
                 className="WeatherWidget__settingsButton"
                 onClick={() => {setSettingsPanelOpen(!isSettingsPanelOpen)}}
             >
                 {isSettingsPanelOpen ? (
-                    <IconClose className="WeatherWidget__settingsButtonIcon" />
+                    <IconClose
+                        className="
+                            WeatherWidget__settingsButtonIcon
+                            WeatherWidget__settingsButtonIcon--close
+                        "
+                    />
                 ) : (
-                    <IconSettings className="WeatherWidget__settingsButtonIcon" />
+                    <IconSettings
+                        className="
+                            WeatherWidget__settingsButtonIcon
+                            WeatherWidget__settingsButtonIcon--settings
+                        "
+                    />
                 )}
             </button>
 

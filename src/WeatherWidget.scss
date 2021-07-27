@@ -1,5 +1,19 @@
 .WeatherWidget {
+    position: relative;
+    max-width: 200px;
+    padding: 16px;
+    border: 1px black solid;
+    border-radius: 5px;
+
     &__settingsButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
         border: none;
         background: none;
         cursor: pointer;
@@ -10,6 +24,12 @@
     }
 
     &__settingsButtonIcon {
-        width: 24px;
+        &--settings {
+            width: 24px;
+        }
+
+        &--close {
+            width: 16px;
+        }
     }
 }
