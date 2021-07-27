@@ -1,9 +1,9 @@
 import React from 'react';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { removeCity, changeCitiesOrder } from '../../store/citiesSlice';
-import { ReactComponent as IconTrash } from '../../assets/icons/trash.svg';
-import { ReactComponent as IconReorder } from '../../assets/icons/menu.svg';
+import { changeCitiesOrder } from '../../store/citiesSlice';
+
+import { SettingsCityItem } from '../SettingsCityItem/SettingsCityItem';
 
 import './SettingsCitiesList.scss';
 
@@ -36,26 +36,8 @@ export const SettingsCitiesList: React.FC = () => {
                         {cities.map((city, index) => (
                             <Draggable draggableId={`${city.id}`} index={index} key={city.id}>
                                 {(provided) => (
-                                    <li
-                                        {...provided.draggableProps}
-                                        ref={provided.innerRef}
-                                    >
-                                        <button
-                                            className="SettingsCitiesList__reorderButton"
-                                            {...provided.dragHandleProps}
-                                        >
-                                            <IconReorder className="SettingsCitiesList__reorderButtonIcon"/>
-                                        </button>
-
-                                        <span>{city.name}</span>
-
-                                        <button
-                                            className="SettingsCitiesList__removeButton"
-                                            type="button"
-                                            onClick={() => dispatch(removeCity(city.id))}
-                                        >
-                                            <IconTrash className="SettingsCitiesList__removeButtonIcon" />
-                                        </button>
+                                    <li className="SettingsCitiesList__item">
+                                        <SettingsCityItem provided={provided} city={city} />
                                     </li>
                                 )}
                             </Draggable>

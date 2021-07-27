@@ -1,17 +1,7 @@
 .SettingsCitiesList {
-  &__removeButton,
-  &__reorderButton {
-    border: none;
-    background: none;
-    cursor: pointer;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  &__removeButtonIcon,
-  &__reorderButtonIcon {
-    width: 24px;
+  &__item {
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
   }
 }
