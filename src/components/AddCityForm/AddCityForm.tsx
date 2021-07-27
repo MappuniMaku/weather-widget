@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { getWeatherDataByCityName } from '../../store/citiesSlice';
 
-export const AddCityForm: React.FC = (props) => {
+export const AddCityForm: React.FC = () => {
     const [cityName, setCityName] = useState<string>('');
     const status = useAppSelector(state => state.cities.status);
     const dispatch = useAppDispatch();
