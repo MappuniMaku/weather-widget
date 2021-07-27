@@ -2,6 +2,7 @@ import React from 'react';
 import { DraggableProvided } from 'react-beautiful-dnd';
 
 import { CityWeatherDataResponse } from '../../scripts/types';
+import { getFullCityName } from '../../scripts/utils';
 
 import { removeCity } from "../../store/citiesSlice";
 import { useAppDispatch } from "../../store/hooks";
@@ -36,7 +37,7 @@ export const SettingsCityItem: React.FC<SettingsCityItemProps> = (props) => {
                 </button>
 
                 <span className="SettingsCityItem__cityName">
-                    {`${city.name}, ${city.sys.country}`}
+                    {getFullCityName(city)}
                 </span>
             </div>
 
