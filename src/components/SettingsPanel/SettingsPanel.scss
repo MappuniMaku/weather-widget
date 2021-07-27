@@ -1,15 +1,3 @@
 .SettingsPanel {
-  &__removeButton {
-    border: none;
-    background: none;
-    cursor: pointer;
 
-    &:focus {
-      outline: none;
-    }
-  }
-
-  &__removeButtonIcon {
-    width: 24px;
-  }
 }

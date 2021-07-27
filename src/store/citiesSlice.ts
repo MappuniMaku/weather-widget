@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { CitiesListType } from '../scripts/types';
+import { CitiesListType, ChangeCitiesOrderActionPayload } from '../scripts/types';
 import { apiGetWeatherDataByCityName, apiGetWeatherDataByCoords } from '../scripts/api-methods';
 
 export const getWeatherDataByCityName = createAsyncThunk('cities/addCity', (cityName: string) => {
@@ -32,6 +32,12 @@ export const citiesSlice = createSlice({
         removeCity: (state, action: PayloadAction<number>) => {
             state.items = state.items.filter((item => item.id !== action.payload));
         },
+        changeCitiesOrder: (state, action: PayloadAction<ChangeCitiesOrderActionPayload>) => {
+            const { from, to } = action.payload;
+            const draggedCity = state.items[from];
+            state.items.splice(from, 1);
+            state.items.splice(to, 0, draggedCity);
+        },
     },
     extraReducers: builder => {
         builder.addCase(getWeatherDataByCityName.pending, state => {
@@ -53,6 +59,6 @@ export const citiesSlice = createSlice({
     },
 });
 
-export const { setCities, removeCity } = citiesSlice.actions;
+export const { setCities, removeCity, changeCitiesOrder } = citiesSlice.actions;
 
 export default citiesSlice.reducer;

@@ -30,3 +30,8 @@ export type CityWeatherDataResponse = {
 };
 
 export type CitiesListType = Array<CityWeatherDataResponse>;
+
+export type ChangeCitiesOrderActionPayload = {
+    from: number;
+    to: number;
+};
