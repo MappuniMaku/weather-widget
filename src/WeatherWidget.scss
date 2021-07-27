@@ -1,6 +1,7 @@
 .WeatherWidget {
     position: relative;
-    max-width: 200px;
+    height: 310px;
+    max-width: 240px;
     padding: 16px;
     border: 1px black solid;
     border-radius: 5px;
@@ -14,13 +15,6 @@
         align-items: center;
         width: 40px;
         height: 40px;
-        border: none;
-        background: none;
-        cursor: pointer;
-
-        &:focus {
-            outline: none;
-        }
     }
 
     &__settingsButtonIcon {

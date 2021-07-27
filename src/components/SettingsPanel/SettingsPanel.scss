@@ -1,3 +1,15 @@
 .SettingsPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 
+  &__main {
+    margin-bottom: 24px;
+  }
+
+  &__heading {
+    margin-bottom: 16px;
+    font-size: 1.115rem;
+  }
 }

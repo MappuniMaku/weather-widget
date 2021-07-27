@@ -1,4 +1,7 @@
 .SettingsCitiesList {
+  max-height: 162px;
+  overflow-y: auto;
+
   &__item {
       &:not(:last-child) {
         margin-bottom: 12px;

@@ -1,0 +1,29 @@
+.AddCityForm {
+  &__heading {
+    margin-bottom: 4px;
+    font-size: 1.115rem;
+    font-weight: 700;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    height: 32px;
+    padding: 4px;
+
+    &:focus-visible {
+      outline: #0baeff auto 1px;
+    }
+  }
+
+  &__submitButton {
+    margin-left: 4px;
+  }
+
+  &__submitButtonIcon {
+    width: 20px;
+  }
+}

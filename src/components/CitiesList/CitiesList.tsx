@@ -1,6 +1,8 @@
 import React from 'react';
 import { useAppSelector } from '../../store/hooks';
 
+import './CitiesList.scss';
+
 export const CitiesList: React.FC = () => {
     const cities = useAppSelector(state => state.cities.items);
 
@@ -11,15 +13,16 @@ export const CitiesList: React.FC = () => {
 
                 return (
                     <li key={city.id}>
-                        <span>{city.name}</span>
+                        <span>{`${city.name}, ${city.sys.country}`}</span>
                         <img
                             src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
                             alt={weather.description}
                         />
+                        <span>{Math.round(city.main.temp)}&#8451;</span>
                     </li>
                 )
             })) : (
-                <span>Вы пока не добавили города</span>
+                <span>No cities added yet</span>
             )}
         </ul>
     );
