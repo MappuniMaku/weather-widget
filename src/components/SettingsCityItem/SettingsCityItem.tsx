@@ -4,11 +4,11 @@ import { DraggableProvided } from 'react-beautiful-dnd';
 import { CityWeatherDataResponse } from '../../scripts/types';
 import { getFullCityName } from '../../scripts/utils';
 
-import { removeCity } from "../../store/citiesSlice";
-import { useAppDispatch } from "../../store/hooks";
+import { removeCity } from '../../store/citiesSlice';
+import { useAppDispatch } from '../../store/hooks';
 
-import { ReactComponent as IconTrash } from "../../assets/icons/trash.svg";
-import { ReactComponent as IconReorder } from "../../assets/icons/menu.svg";
+import { ReactComponent as IconTrash } from '../../assets/icons/trash.svg';
+import { ReactComponent as IconReorder } from '../../assets/icons/menu.svg';
 
 import './SettingsCityItem.scss';
 
