@@ -5,8 +5,10 @@ import store from './store/store';
 import { Provider } from 'react-redux';
 import './index.scss';
 
-const targetEl = document.querySelector('weather-widget');
-if (targetEl !== null) {
+document.addEventListener('DOMContentLoaded', () => {
+    const targetEl = document.querySelector('weather-widget');
+    if (targetEl === null) return;
+
     ReactDOM.render(
         <React.StrictMode>
             <Provider store={store}>
@@ -15,4 +17,4 @@ if (targetEl !== null) {
         </React.StrictMode>,
         targetEl
     );
-}
+});
